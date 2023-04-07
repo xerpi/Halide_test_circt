@@ -12,6 +12,7 @@ int main(int argc, char **argv) {
 
 	Halide::Runtime::Buffer<int32_t> input(input_buffer, SIZE);
 	Halide::Runtime::Buffer<int32_t> output(SIZE);
+	input.set_host_dirty();
 
 	int ret = test_load(input, output);
 
