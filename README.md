@@ -1,4 +1,10 @@
 ```bash
+cmake .. \
+  -DHalide_DIR=$PWD/../../Halide/install_debug/lib/cmake/Halide \
+  -DHalideHelpers_DIR=$PWD/../../Halide/install_debug/lib/cmake/HalideHelpers
+```
+
+```bash
 cmake .. -DCMAKE_PREFIX_PATH=$PWD/../../Halide/install -DXRT_DIR=$XILINX_XRT/share/cmake/XRT/
 ```
 

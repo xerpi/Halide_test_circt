@@ -43,11 +43,48 @@ void test_load(Halide::Target target)
 
     func(x) = 2 * in(x);
 
-    func.vectorize(x, 2);
+    func.vectorize(x, 4);
 
     //func.unroll(x, 32);
     std::string name(__FUNCTION__);
     func.compile_to_file(name +  "_host", {in}, name, target);
+}
+
+void test_gradient(Halide::Target target)
+{
+    Halide::ImageParam in(Halide::type_of<int32_t>(), 2);
+    Halide::Func func;
+    Halide::Var x, y;
+    Halide::Var x_outer, y_outer, x_inner, y_inner, tile_index;
+
+    func(x, y) = x + y;
+
+    func.tile(x, y, x_outer, y_outer, x_inner, y_inner, 64, 64)
+        .fuse(x_outer, y_outer, tile_index);
+
+    std::string name(__FUNCTION__);
+    func.compile_to_file(name +  "_host", {in}, name, target);
+}
+
+void test_blur_3x3(Halide::Target target)
+{
+    Halide::ImageParam input(Halide::type_of<int32_t>(), 2);
+    Halide::Func blur_x, blur_y;
+    Halide::Var x, y, xi, yi;
+
+    // The algorithm - no storage or order
+    blur_x(x, y) = (input(x-1, y) + input(x, y) + input(x+1, y))/3;
+    blur_y(x, y) = (blur_x(x, y-1) + blur_x(x, y) + blur_x(x, y+1))/3;
+
+    // The schedule - defines order, locality; implies storage
+    blur_x.compute_at(blur_y, x);
+    //blur_x.vectorize(x, 8);
+
+    blur_y.tile(x, y, xi, yi, 32, 32);
+    //blur_y.vectorize(xi, 8);
+
+    std::string name(__FUNCTION__);
+    blur_y.compile_to_file(name +  "_host", {input}, name, target);
 }
 
 Halide::Func test_simple()
@@ -141,7 +178,9 @@ int main(int argc, char **argv)
     std::cout << "Target: " << target.to_string() << std::endl;
     std::cout << "Has CIRCT feature: " << target.has_feature(Halide::Target::Feature::CIRCT) << std::endl;
 
-    test_load(target);
+    //test_load(target);
+    //test_gradient(target);
+    test_blur_3x3(target);
     //Halide::Func func = test_store();
     //Halide::Func func = test_filter();
     //Halide::Func func = test_simple();

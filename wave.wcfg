@@ -6,9 +6,9 @@
       <db_ref path="vitis_design_wrapper_behav.wdb" id="1">
          <top_modules>
             <top_module name="\$unit_vitis_design_axi_register_slice_0_0_stub_sv_1424034433 " />
-            <top_module name="\$unit_vitis_design_irq_const_tieoff_0_stub_sv_3925412120 " />
+            <top_module name="\$unit_vitis_design_irq_const_tieoff_0_stub_sv_1555010443 " />
             <top_module name="\$unit_vitis_design_ps_e_0_stub_sv " />
-            <top_module name="\$unit_vitis_design_xbar_0_stub_sv_1219063804 " />
+            <top_module name="\$unit_vitis_design_xbar_0_stub_sv_162306472 " />
             <top_module name="glbl" />
             <top_module name="ipif_pkg" />
             <top_module name="vitis_design_wrapper" />
@@ -16,26 +16,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="8,518,484.589 ns"></ZoomStartTime>
-      <ZoomEndTime time="8,518,602.583 ns"></ZoomEndTime>
-      <Cursor1Time time="8,532,935.067 ns"></Cursor1Time>
+      <ZoomStartTime time="4,071,094.100 ns"></ZoomStartTime>
+      <ZoomEndTime time="4,072,900.101 ns"></ZoomEndTime>
+      <Cursor1Time time="4,071,500.100 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="302"></NameColumnWidth>
-      <ValueColumnWidth column_width="110"></ValueColumnWidth>
+      <NameColumnWidth column_width="250"></NameColumnWidth>
+      <ValueColumnWidth column_width="123"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="40" />
-   <wave_markers>
-      <marker label="" time="7666286666" />
-      <marker label="" time="6650906666" />
-      <marker label="" time="6625353462" />
-      <marker label="" time="8518540000" />
-      <marker label="" time="8467435067" />
-   </wave_markers>
+   <WVObjectSize size="80" />
    <wvobject type="group" fp_name="HLS_Process_Summary_group">
       <obj_property name="label">HLS Process Summary</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject type="group" fp_name="device_group">
       <obj_property name="label">Device &quot;xilinx.com_xd_xilinx_zcu102_base_202220_1_202220_1-0&quot;</obj_property>
@@ -64,6 +56,10 @@
                   <obj_property name="label">Data Transfers</obj_property>
                   <obj_property name="DisplayName">label</obj_property>
                   <obj_property name="isExpanded"></obj_property>
+                  <wvobject type="protoinst" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/s_axi_control">
+                     <obj_property name="ElementShortName">s_axi_control</obj_property>
+                     <obj_property name="ObjectShortName">s_axi_control</obj_property>
+                  </wvobject>
                   <wvobject type="protoinst" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/m00_axi">
                      <obj_property name="ElementShortName">m00_axi</obj_property>
                      <obj_property name="ObjectShortName">m00_axi</obj_property>
@@ -76,6 +72,20 @@
                      <obj_property name="Render_Data">/vitis_design_wrapper/vitis_design_i/toplevel_1/m00_axi.readWriteSummary</obj_property>
                      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
                      <obj_property name="CellHeight">36</obj_property>
+                     <obj_property name="isExpanded"></obj_property>
+                  </wvobject>
+                  <wvobject type="protoinst" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/m01_axi">
+                     <obj_property name="children_use_element_short_name">true</obj_property>
+                     <obj_property name="WaveformStyle">STYLE_ENUM_TRANSACTION</obj_property>
+                     <obj_property name="EnumTransactionColorTable">0=blank 1=#D399FF 2=pink</obj_property>
+                     <obj_property name="EnumTransactionValueTable">0=blank;1=Read;2=Write;3=Read/Write</obj_property>
+                     <obj_property name="UseCustomSignalColor">true</obj_property>
+                     <obj_property name="CustomSignalColor">turquoise</obj_property>
+                     <obj_property name="Render_Data">/vitis_design_wrapper/vitis_design_i/toplevel_1/m01_axi.readWriteSummary</obj_property>
+                     <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+                     <obj_property name="CellHeight">36</obj_property>
+                     <obj_property name="ElementShortName">m01_axi</obj_property>
+                     <obj_property name="ObjectShortName">m01_axi</obj_property>
                      <obj_property name="isExpanded"></obj_property>
                   </wvobject>
                </wvobject>
@@ -103,6 +113,22 @@
       <obj_property name="ElementShortName">int_ap_done_reg</obj_property>
       <obj_property name="ObjectShortName">int_ap_done_reg</obj_property>
    </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/control_axi/int_gie_reg">
+      <obj_property name="ElementShortName">int_gie_reg</obj_property>
+      <obj_property name="ObjectShortName">int_gie_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/control_axi/int_ier_reg">
+      <obj_property name="ElementShortName">int_ier_reg[1:0]</obj_property>
+      <obj_property name="ObjectShortName">int_ier_reg[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/control_axi/int_isr_done_reg">
+      <obj_property name="ElementShortName">int_isr_done_reg</obj_property>
+      <obj_property name="ObjectShortName">int_isr_done_reg</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/control_axi/int_isr_ready_reg">
+      <obj_property name="ElementShortName">int_isr_ready_reg</obj_property>
+      <obj_property name="ObjectShortName">int_isr_ready_reg</obj_property>
+   </wvobject>
    <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/control_axi/ap_start">
       <obj_property name="ElementShortName">ap_start</obj_property>
       <obj_property name="ObjectShortName">ap_start</obj_property>
@@ -120,12 +146,12 @@
       <obj_property name="ObjectShortName">done</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/controller/state_reg">
-      <obj_property name="ElementShortName">state_reg[31:0]</obj_property>
-      <obj_property name="ObjectShortName">state_reg[31:0]</obj_property>
+      <obj_property name="ElementShortName">state_reg[6:0]</obj_property>
+      <obj_property name="ObjectShortName">state_reg[6:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/controller/state_next">
-      <obj_property name="ElementShortName">state_next[31:0]</obj_property>
-      <obj_property name="ObjectShortName">state_next[31:0]</obj_property>
+      <obj_property name="ElementShortName">state_next[6:0]</obj_property>
+      <obj_property name="ObjectShortName">state_next[6:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/while_0_arg0_reg_reg">
       <obj_property name="ElementShortName">while_0_arg0_reg_reg[31:0]</obj_property>
@@ -148,16 +174,16 @@
       <obj_property name="ObjectShortName">_GEN_0[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/std_mult_pipe_0_left">
-      <obj_property name="ElementShortName">std_mult_pipe_0_left[63:0]</obj_property>
-      <obj_property name="ObjectShortName">std_mult_pipe_0_left[63:0]</obj_property>
+      <obj_property name="ElementShortName">std_mult_pipe_0_left[31:0]</obj_property>
+      <obj_property name="ObjectShortName">std_mult_pipe_0_left[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/std_mult_pipe_0_right">
-      <obj_property name="ElementShortName">std_mult_pipe_0_right[63:0]</obj_property>
-      <obj_property name="ObjectShortName">std_mult_pipe_0_right[63:0]</obj_property>
+      <obj_property name="ElementShortName">std_mult_pipe_0_right[31:0]</obj_property>
+      <obj_property name="ObjectShortName">std_mult_pipe_0_right[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/std_mult_pipe_0_out">
-      <obj_property name="ElementShortName">std_mult_pipe_0_out[63:0]</obj_property>
-      <obj_property name="ObjectShortName">std_mult_pipe_0_out[63:0]</obj_property>
+      <obj_property name="ElementShortName">std_mult_pipe_0_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">std_mult_pipe_0_out[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/_GEN">
       <obj_property name="ElementShortName">_GEN[31:0]</obj_property>
@@ -179,17 +205,81 @@
       <obj_property name="ElementShortName">_controller_out4</obj_property>
       <obj_property name="ObjectShortName">_controller_out4</obj_property>
    </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/_controller_out6">
+      <obj_property name="ElementShortName">_controller_out6</obj_property>
+      <obj_property name="ObjectShortName">_controller_out6</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem0_write_data">
-      <obj_property name="ElementShortName">ext_mem0_write_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ext_mem0_write_data[31:0]</obj_property>
+      <obj_property name="ElementShortName">ext_mem0_write_data[511:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_mem0_write_data[511:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem0_addr0">
       <obj_property name="ElementShortName">ext_mem0_addr0[63:0]</obj_property>
       <obj_property name="ObjectShortName">ext_mem0_addr0[63:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem0_read_en">
+      <obj_property name="ElementShortName">ext_mem0_read_en</obj_property>
+      <obj_property name="ObjectShortName">ext_mem0_read_en</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem0_write_en">
       <obj_property name="ElementShortName">ext_mem0_write_en</obj_property>
       <obj_property name="ObjectShortName">ext_mem0_write_en</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem0_access_size">
+      <obj_property name="ElementShortName">ext_mem0_access_size[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_mem0_access_size[2:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem0_done">
+      <obj_property name="ElementShortName">ext_mem0_done</obj_property>
+      <obj_property name="ObjectShortName">ext_mem0_done</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem1_addr0">
+      <obj_property name="ElementShortName">ext_mem1_addr0[63:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_mem1_addr0[63:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem1_read_en">
+      <obj_property name="ElementShortName">ext_mem1_read_en</obj_property>
+      <obj_property name="ObjectShortName">ext_mem1_read_en</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem1_read_data">
+      <obj_property name="ElementShortName">ext_mem1_read_data[511:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_mem1_read_data[511:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem1_write_en">
+      <obj_property name="ElementShortName">ext_mem1_write_en</obj_property>
+      <obj_property name="ObjectShortName">ext_mem1_write_en</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem1_access_size">
+      <obj_property name="ElementShortName">ext_mem1_access_size[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_mem1_access_size[2:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem1_done">
+      <obj_property name="ElementShortName">ext_mem1_done</obj_property>
+      <obj_property name="ObjectShortName">ext_mem1_done</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_0/calyx_write_en">
       <obj_property name="ElementShortName">calyx_write_en</obj_property>
@@ -198,10 +288,6 @@
    <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_0/calyx_done">
       <obj_property name="ElementShortName">calyx_done</obj_property>
       <obj_property name="ObjectShortName">calyx_done</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/ext_mem0_done">
-      <obj_property name="ElementShortName">ext_mem0_done</obj_property>
-      <obj_property name="ObjectShortName">ext_mem0_done</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_0/m_axi_awready">
       <obj_property name="ElementShortName">m_axi_awready</obj_property>
@@ -224,8 +310,8 @@
       <obj_property name="ObjectShortName">m_axi_wvalid</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_0/m_axi_wstrb">
-      <obj_property name="ElementShortName">m_axi_wstrb[3:0]</obj_property>
-      <obj_property name="ObjectShortName">m_axi_wstrb[3:0]</obj_property>
+      <obj_property name="ElementShortName">m_axi_wstrb[63:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axi_wstrb[63:0]</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_0/m_axi_wlast">
       <obj_property name="ElementShortName">m_axi_wlast</obj_property>
@@ -234,5 +320,149 @@
    <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_0/m_axi_bready">
       <obj_property name="ElementShortName">m_axi_bready</obj_property>
       <obj_property name="ObjectShortName">m_axi_bready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/load_seq_0_reg_done_reg">
+      <obj_property name="ElementShortName">load_seq_0_reg_done_reg</obj_property>
+      <obj_property name="ObjectShortName">load_seq_0_reg_done_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_rdata">
+      <obj_property name="ElementShortName">m_axi_rdata[511:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axi_rdata[511:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/calyx_read_data">
+      <obj_property name="ElementShortName">calyx_read_data[511:0]</obj_property>
+      <obj_property name="ObjectShortName">calyx_read_data[511:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_wstrb">
+      <obj_property name="ElementShortName">m_axi_wstrb[63:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axi_wstrb[63:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_araddr">
+      <obj_property name="ElementShortName">m_axi_araddr[63:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axi_araddr[63:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/_GEN">
+      <obj_property name="ElementShortName">_GEN[511:0]</obj_property>
+      <obj_property name="ObjectShortName">_GEN[511:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/calyx_done">
+      <obj_property name="ElementShortName">calyx_done</obj_property>
+      <obj_property name="ObjectShortName">calyx_done</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/calyx_read_en">
+      <obj_property name="ElementShortName">calyx_read_en</obj_property>
+      <obj_property name="ObjectShortName">calyx_read_en</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/calyx_write_en">
+      <obj_property name="ElementShortName">calyx_write_en</obj_property>
+      <obj_property name="ObjectShortName">calyx_write_en</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_awready">
+      <obj_property name="ElementShortName">m_axi_awready</obj_property>
+      <obj_property name="ObjectShortName">m_axi_awready</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_wready">
+      <obj_property name="ElementShortName">m_axi_wready</obj_property>
+      <obj_property name="ObjectShortName">m_axi_wready</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_bvalid">
+      <obj_property name="ElementShortName">m_axi_bvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axi_bvalid</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_arready">
+      <obj_property name="ElementShortName">m_axi_arready</obj_property>
+      <obj_property name="ObjectShortName">m_axi_arready</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_rvalid">
+      <obj_property name="ElementShortName">m_axi_rvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axi_rvalid</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_arvalid">
+      <obj_property name="ElementShortName">m_axi_arvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axi_arvalid</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_rready">
+      <obj_property name="ElementShortName">m_axi_rready</obj_property>
+      <obj_property name="ObjectShortName">m_axi_rready</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_awvalid">
+      <obj_property name="ElementShortName">m_axi_awvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axi_awvalid</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_wvalid">
+      <obj_property name="ElementShortName">m_axi_wvalid</obj_property>
+      <obj_property name="ObjectShortName">m_axi_wvalid</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_bready">
+      <obj_property name="ElementShortName">m_axi_bready</obj_property>
+      <obj_property name="ObjectShortName">m_axi_bready</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/load_seq_0_reg_in">
+      <obj_property name="ElementShortName">load_seq_0_reg_in[7:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">load_seq_0_reg_in[7:0][31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/load_seq_0_reg_reg">
+      <obj_property name="ElementShortName">load_seq_0_reg_reg[7:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">load_seq_0_reg_reg[7:0][31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/m_axi_wdata">
+      <obj_property name="ElementShortName">m_axi_wdata[511:0]</obj_property>
+      <obj_property name="ObjectShortName">m_axi_wdata[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/calyx_ext_mem_to_axi_1/calyx_write_data">
+      <obj_property name="ElementShortName">calyx_write_data[511:0]</obj_property>
+      <obj_property name="ObjectShortName">calyx_write_data[511:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/mem_0_done_reg">
+      <obj_property name="ElementShortName">mem_0_done_reg</obj_property>
+      <obj_property name="ObjectShortName">mem_0_done_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/mem_0_mem">
+      <obj_property name="ElementShortName">mem_0_mem[0:135][255:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_0_mem[0:135][255:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/mem_0_read_en">
+      <obj_property name="ElementShortName">mem_0_read_en</obj_property>
+      <obj_property name="ObjectShortName">mem_0_read_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vitis_design_wrapper/vitis_design_i/toplevel_1/inst/kernel/mem_0_write_data">
+      <obj_property name="ElementShortName">mem_0_write_data[255:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_0_write_data[255:0]</obj_property>
    </wvobject>
 </wave_config>
