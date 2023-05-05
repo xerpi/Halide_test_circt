@@ -1,0 +1,16 @@
+size: 33554432
+num_runs: 3
+dump: 0
+XRT: 'test_load_div_int8_kernel_f1.s0.v0.v0' execution took 507545000 ns
+XRT: 'test_load_div_int8_kernel_f1.s0.v0.v0' execution took 507932000 ns
+XRT: 'test_load_div_int8_kernel_f1.s0.v0.v0' execution took 1005731000 ns
+Done!
+Duration (host): 2708180439 ns
+Success!
+test_load_div_int8
+ total time: 2134.885010 ms  samples: 1999  runs: 3  time/run: 711.628357 ms
+ heap allocations: 0  peak heap usage: 0 bytes
+  halide_malloc:         0.000ms   (0%)    
+  halide_free:           0.000ms   (0%)    
+  f1:                    711.628ms (100%)  
+

@@ -1,0 +1,16 @@
+size: 4194304
+num_runs: 3
+dump: 0
+XRT: 'test_load_kernel_f1.s0.v0.v0' execution took 506444000 ns
+XRT: 'test_load_kernel_f1.s0.v0.v0' execution took 506393000 ns
+XRT: 'test_load_kernel_f1.s0.v0.v0' execution took 1004250000 ns
+Done!
+Duration (host): 2789197474 ns
+Success!
+test_load
+ total time: 2077.048096 ms  samples: 1946  runs: 3  time/run: 692.349365 ms
+ heap allocations: 0  peak heap usage: 0 bytes
+  halide_malloc:         0.000ms   (0%)    
+  halide_free:           0.000ms   (0%)    
+  f1:                    692.349ms (100%)  
+
