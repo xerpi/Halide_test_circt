@@ -130,7 +130,7 @@ void test_blur_3x3_sliding_window(Halide::Target target)
     blur_y(x, y) = (blur_x(x, y-1) + blur_x(x, y) + blur_x(x, y+1))/3;
 
     // The schedule - defines order, locality; implies storage
-    blur_y.tile(x, y, xi, yi, 8, 8);
+    blur_y.tile(x, y, xi, yi, 64, 64);
     //blur_y.vectorize(xi, 8);
 
     blur_x.store_at(blur_y, x)
