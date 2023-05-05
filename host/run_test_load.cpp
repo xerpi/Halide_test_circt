@@ -1,4 +1,5 @@
-#include <stdio.h>
+#include <cstdio>
+#include <chrono>
 #include "HalideBuffer.h"
 #include "test_load_host.h"
 
@@ -50,7 +51,7 @@ int main(int argc, char **argv) {
 
     bool success = true;
 
-    for (int x = 0; x < SIZE; x++) {
+    for (int x = 0; x < size; x++) {
         uint32_t output_val = output(x);
         uint32_t correct_val = 5 * input_buffer[x];
         if (output_val != correct_val) {
