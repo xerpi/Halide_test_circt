@@ -1,0 +1,202 @@
+# Compile Halide
+
+/home/fpga/cmake-3.24.2-linux-aarch64/bin/cmake -DCMAKE_MODULE_PATH=/usr/lib/llvm-14/lib/cmake/llvm/ -DCMAKE_BUILD_TYPE=Release -DTARGET_AMDGPU=OFF -DTARGET_ARM=OFF -DTARGET_HEXAGON=OFF -DTARGET_MIPS=OFF -DTARGET_NVPTX=OFF -DTARGET_POWERPC=OFF -DTARGET_RISCV=OFF -DTARGET_WEBASSEMBLY=OFF -DTARGET_X86=OFF -DTARGET_METAL=OFF -DTARGET_D3D12COMPUTE=OFF -DWITH_TUTORIALS=OFF ..
+
+
+cmake -G Ninja /home/nvidia/projects/build_bot/worker/halide-main-llvm15-arm-64-linux-cmake/halide-source -DClang_DIR=/home/nvidia/projects/build_bot/worker/halide-main-llvm15-arm-64-linux-cmake/../llvm-15-arm-64-linux/llvm-install/lib/cmake/clang -DCMAKE_INSTALL_PREFIX=/home/nvidia/projects/build_bot/worker/halide-main-llvm15-arm-64-linux-cmake/halide-install -DHalide_TARGET=host -DLLD_DIR=/home/nvidia/projects/build_bot/worker/halide-main-llvm15-arm-64-linux-cmake/../llvm-15-arm-64-linux/llvm-install/lib/cmake/lld -DLLVM_DIR=/home/nvidia/projects/build_bot/worker/halide-main-llvm15-arm-64-linux-cmake/../llvm-15-arm-64-linux/llvm-install/lib/cmake/llvm -DLLVM_ROOT=/home/nvidia/projects/build_bot/worker/halide-main-llvm15-arm-64-linux-cmake/../llvm-15-arm-64-linux/llvm-install -DWITH_PYTHON_BINDINGS=OFF -DCMAKE_BUILD_TYPE=Release -DHalide_CCACHE_BUILD=ON
+
+
+// Compile Halide-ATAM
+
+export HALIDE_ROOT=/home/fpga/research/Halide-ATAM/halide
+
+export HALIDE_BUILD=/opt/halide/usr/local/
+
+// Compile ATAM
+
+cd ATAM/build
+export CXXFLAGS="$CXXFLAGS -pthread -std=c++11"
+cmake -D CLAPACK_DIR=$(pwd)/../../clapack-3.2.1-CMAKE/build -D OpenCV_DIR=$(pwd)/../../opencv-4.6.0/build/ -D ON_ZYBO=ON ..
+
+
+### Build LLVM
+
+### Build CIRCT
+
+# Build LLVM with MLIR and Clang (for Polygeist)
+cd circt/llvm/
+mkdir build_release && cd build_release/
+cmake -G Ninja ../llvm \
+    -DLLVM_ENABLE_PROJECTS="mlir;clang" \
+    -DLLVM_TARGETS_TO_BUILD="host;AArch64" \
+    -DLLVM_ENABLE_ASSERTIONS=ON \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+cd circt/
+mkdir build_release && cd build_release/
+cmake -G Ninja .. \
+    -DMLIR_DIR=$PWD/../llvm/build_release/lib/cmake/mlir \
+    -DLLVM_DIR=$PWD/../llvm/build_release/lib/cmake/llvm \
+    -DLLVM_ENABLE_ASSERTIONS=ON \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+    
+### Build Polygeist
+cd polygeist/
+mkdir build_release && cd build_release/
+cmake -G Ninja .. \
+    -DMLIR_DIR=$PWD/../../../circt/llvm/build_release/lib/cmake/mlir \
+    -DCLANG_DIR=$PWD/../../../circt/llvm/build_release/lib/cmake/clang \
+    -DLLVM_TARGETS_TO_BUILD="host;AArch64" \
+    -DLLVM_ENABLE_ASSERTIONS=ON \
+    -DCMAKE_BUILD_TYPE=RELEASE \
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+    -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=mold"
+
+### Build scalehls
+cmake -G Ninja .. \
+    -DMLIR_DIR=$PWD/../../circt/llvm/build_release/lib/cmake/mlir \
+    -DLLVM_ENABLE_ASSERTIONS=ON \
+    -DCMAKE_BUILD_TYPE=RELEASE \
+    -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=mold"
+
+
+### Build Halide with CIRCT
+
+# Debug
+
+cmake -G Ninja .. \
+  -DCMAKE_INSTALL_PREFIX="../install_debug" \
+  -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=mold" \
+  -DCMAKE_BUILD_TYPE=Debug \
+  -DHalide_ENABLE_RTTI:BOOL=OFF \
+  -DHalide_ENABLE_EXCEPTIONS:BOOL=OFF \
+  -DLLVM_DIR=$PWD/../../circt/llvm/build_release/lib/cmake/llvm/ \
+  -DMLIR_DIR=$PWD/../../circt/llvm/build_release/lib/cmake/mlir/ \
+  -DCIRCT_DIR=$PWD/../../circt/build_debug/lib/cmake/circt/ \
+  -DTARGET_AMDGPU=OFF \
+  -DTARGET_ARM=OFF \
+  -DTARGET_AARCH64=ON \
+  -DTARGET_HEXAGON=OFF \
+  -DTARGET_NVPTX=OFF \
+  -DTARGET_POWERPC=OFF \
+  -DTARGET_RISCV=OFF \
+  -DTARGET_WEBASSEMBLY=OFF \
+  -DTARGET_X86=ON \
+  -DTARGET_METAL=OFF \
+  -DTARGET_D3D12COMPUTE=OFF \
+  -DWITH_TUTORIALS=OFF \
+  -DWITH_TESTS=OFF
+
+# Release
+
+cmake -G Ninja .. \
+  -DCMAKE_INSTALL_PREFIX="../install_release" \
+  -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=mold" \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DHalide_ENABLE_RTTI:BOOL=OFF \
+  -DHalide_ENABLE_EXCEPTIONS:BOOL=OFF \
+  -DLLVM_DIR=$PWD/../../circt/llvm/build_release/lib/cmake/llvm/ \
+  -DMLIR_DIR=$PWD/../../circt/llvm/build_release/lib/cmake/mlir/ \
+  -DCIRCT_DIR=$PWD/../../circt/build_release/lib/cmake/circt/ \
+  -DTARGET_AMDGPU=OFF \
+  -DTARGET_ARM=OFF \
+  -DTARGET_AARCH64=ON \
+  -DTARGET_HEXAGON=OFF \
+  -DTARGET_NVPTX=OFF \
+  -DTARGET_POWERPC=OFF \
+  -DTARGET_RISCV=OFF \
+  -DTARGET_WEBASSEMBLY=OFF \
+  -DTARGET_X86=ON \
+  -DTARGET_METAL=OFF \
+  -DTARGET_D3D12COMPUTE=OFF \
+  -DWITH_TUTORIALS=OFF \
+  -DWITH_TESTS=OFF
+
+
+  -DCMAKE_CXX_FLAGS="-I$XILINX_XRT/include" \
+  -DXRT_DIR=$XILINX_XRT/share/cmake/XRT/ 
+
+
+
+
+#### Generate kernel.xclbin
+
+export PLATFORM_REPO_PATHS=/home/xerpi/workspace/u96v2_sbc_base/export/u96v2_sbc_base/
+export ROOTFS=/home/xerpi/Desktop/Research/petalinux-zcu102/xilinx-zcu102-2022.2/images/linux
+#export ROOTFS=/opt/Xilinx/platform/xilinx-zynqmp-common-v2022.2/
+
+# Platform: xilinx_zcu102_base_202220_1
+
+source /opt/Xilinx/Vivado/2022.2/settings64.sh
+
+vivado -mode batch -source ../../gen_xo.tcl -tclargs xclbin/kernel.xo m00_axi m01_axi
+
+# HW EMU
+v++ -l -g -t hw_emu --platform xilinx_zcu102_base_202220_1 --save-temps --profile.data all:all:all --profile.exec all:all:all xclbin/kernel.xo -o xclbin/kernel.xclbin
+
+v++ -p -t hw_emu --platform xilinx_zcu102_base_202220_1 --save-temps --debug --profile.data all:all:all --profile.exec all:all:all xclbin/kernel.xclbin -o kernel.xclbin --package.out_dir package --package.rootfs ${ROOTFS}/rootfs.ext4 --package.sd_file ${ROOTFS}/Image --package.sd_file ../../xrt.ini
+
+./package/launch_hw_emu.sh -forward-port 1440 22 -sim-gui -wcfg-file-path "$PWD/../../wave.wcfg"
+
+# HW
+source /opt/Xilinx/Vivado/2022.2/settings64.sh
+
+vivado -mode batch -source ../../gen_xo.tcl -tclargs xclbin/kernel.xo m00_axi m01_axi
+
+v++ -l -g -t hw --platform u96v2_sbc_base --save-temps --profile.data all:all:all --profile.exec all:all:all xclbin/kernel.xo -o xclbin/kernel.xclbin
+
+
+# Open wave
+
+open_wave_config ../../../../../../wave.wcfg
+
+ssh-keygen -R '[localhost]:1440'
+echo root | sshpass ssh-copy-id -f -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519.pub qemu
+
+scp -P 1440 ../../Halide/build/include/{HalideRuntime.h,HalideBuffer.h} root@localhost:/mnt/Halide/
+scp ../host/run_test_load.cpp qemu:/mnt
+scp -O test_*_host.{o,h} qemu:/mnt
+
+make && HL_TARGET=arm-64-linux-circt-debug ./halide_test
+ninja -C ../../circt/build_release/ circt-opt && make -j 8 -C ../../Halide/build Halide && make && HL_TARGET=arm-64-linux-circt-debug ./halide_test 
+
+# In the FPGA/QEMU
+cd /mnt
+g++ -c -std=c++17 -IHalide run_test_load.cpp
+g++ run_test_load.o test_load_host.o -lxrt_core -lxrt_coreutil -o run_test_load
+cp kernel.xclbin test_load_kernel_f1.s0.v0.v0.xclbin
+export XCL_EMULATION_MODE=hw_emu
+./run_test_load
+
+# Old
+v++ -g -t hw_emu --platform u96v2_sbc_base --save-temps --profile.data all:all:all --profile.exec all:all:all -lo xclbin/kernel.xclbin xclbin/kernel.xo
+v++ --package -t hw_emu --platform u96v2_sbc_base --save-temps xclbin/kernel.xclbin -o xclbin/kernel.packaged.xclbin
+
+
+
+###### Compile gen kernel
+
+
+
+
+
+#### Fix Vivado binutils-2.37
+
+cd /opt/Xilinx/Vivado/2022.2/tps/lnx64/binutils-2.37
+mv bin bin_backup
+ln -s /usr/bin bin
+
+# Petalinux
+cd /home/xerpi/Desktop/Research/petalinux-zcu102/xilinx-zcu102-2022.2
+source /opt/petalinux-v2022.2-10141622/settings.sh
+petalinux-config -c rootfs
+
+## GPT
+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
+
+# wifi
+LEm3djEWdGE4L
+
+

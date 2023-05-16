@@ -1,0 +1,103 @@
+media-ctl -v -d /dev/media0 -V '"imx219 3-0010":0 [fmt:SRGGB10_1X10/3280x2464]'
+media-ctl -v -d /dev/media0 -V '"a0000000.mipi_csi2_rx_subsystem":1 [fmt:SRGGB10_1X10/3280x2464]'
+media-ctl -v -d /dev/media0 -V '"a0020000.v_demosaic":1 [fmt:RBG888_1X24/3280x2464]'
+media-ctl -v -d /dev/media0 -V '"a0080000.v_gamma_lut":1 [fmt:RBG888_1X24/3280x2464]'
+media-ctl -v -d /dev/media0 -V '"a0040000.v_proc_ss":1 [fmt:UYVY/640x480]'
+
+v4l2-ctl --device /dev/video0 --set-fmt-video=width=640,height=480,pixelformat=UYVY --stream-mmap --stream-to=frame.uyvy --stream-count=1
+
+
+########################## OLD  #######################
+media-ctl -v -d /dev/media0 -V '"imx219 3-0010":0 [fmt:SBGGR8_1X8/1920x1080]'
+media-ctl -v -d /dev/media0 -V '"a0100000.mipi_csi2_rx_subsystem":1 [fmt:SBGGR8_1X8/1920x1080]'
+media-ctl -v -d /dev/media0 -V '"a0060000.v_demosaic":1 [fmt:RBG888_1X24/1920x1080]'
+media-ctl -v -d /dev/media0 -V '"a00c0000.v_gamma_lut":1 [fmt:RBG888_1X24/1920x1080]'
+media-ctl -v -d /dev/media0 -V '"a0040000.v_proc_ss":1 [fmt:RBG888_1X24/1920x1080]'
+media-ctl -v -d /dev/media0 -V '"a0000000.v_proc_ss":1 [fmt:UYVY8_1X16/1920x1080]'
+# media-ctl -v -d /dev/media0 -V '"vcap_video_pipeline_v_proc_ss_s":0 [fmt:UYVY/1920x1080]'
+
+######################### stereo #######################################################################
+
+media-ctl -v -d /dev/media0 -V '"imx219 3-0010":0 [fmt:SBGGR8_1X8/640x480]'
+media-ctl -v -d /dev/media0 -V '"a0100000.mipi_csi2_rx_subsystem":1 [fmt:SBGGR8/640x480]'
+media-ctl -v -d /dev/media0 -V '"a0060000.v_demosaic":1 [fmt:RBG24/640x480]'
+media-ctl -v -d /dev/media0 -V '"a00c0000.v_gamma_lut":1 [fmt:RBG24/640x480]'
+media-ctl -v -d /dev/media0 -V '"a0040000.v_proc_ss":1 [fmt:RBG24/640x480]'
+media-ctl -v -d /dev/media0 -V '"a0000000.v_proc_ss":1 [fmt:UYVY/640x480]'
+
+
+########################################################################################################
+
+media-ctl -v -d /dev/media0 -V '"imx219 3-0010":0 [fmt:SRGGB8_1X8/1920x1080]'
+media-ctl -v -d /dev/media0 -V '"a0000000.mipi_csi2_rx_subsystem":1 [fmt:SRGGB8_1X8/1920x1080]'
+media-ctl -v -d /dev/media0 -V '"a0020000.v_demosaic":1 [fmt:RBG888_1X24/1920x1080]'
+media-ctl -v -d /dev/media0 -V '"a0080000.v_gamma_lut":1 [fmt:RBG888_1X24/1920x1080]'
+media-ctl -v -d /dev/media0 -V '"a0040000.v_proc_ss":1 [fmt:RBG888_1X24/1920x1080]'
+
+########################################################################################################
+
+media-ctl -v -d /dev/media0 -V '"imx219 3-0010":0 [fmt:SRGGB10_1X10/640x480]'
+media-ctl -v -d /dev/media0 -V '"a0000000.mipi_csi2_rx_subsystem":1 [fmt:SRGGB10_1X10/640x480]'
+media-ctl -v -d /dev/media0 -V '"a0020000.v_demosaic":1 [fmt:RBG888_1X24/640x480]'
+media-ctl -v -d /dev/media0 -V '"a0080000.v_gamma_lut":1 [fmt:RBG888_1X24/640x480]'
+media-ctl -v -d /dev/media0 -V '"a0040000.v_proc_ss":1 [fmt:RBG888_1X24/640x480]'
+
+
+######################################################################################################
+
+
+media-ctl -v -d /dev/media0 -V '"imx219 3-0010":0 [fmt:SRGGB10_1X10/3280x2464]'
+media-ctl -v -d /dev/media0 -V '"a0000000.mipi_csi2_rx_subsystem":1 [fmt:SRGGB10_1X10/3280x2464]'
+media-ctl -v -d /dev/media0 -V '"a0020000.v_demosaic":1 [fmt:RBG888_1X24/3280x2464]'
+media-ctl -v -d /dev/media0 -V '"a0080000.v_gamma_lut":1 [fmt:RBG888_1X24/3280x2464]'
+media-ctl -v -d /dev/media0 -V '"a0040000.v_proc_ss":1 [fmt:RBG888_1X24/640x480]'
+
+
+######################################################################################################
+
+
+v4l2-ctl --device /dev/video0 --stream-mmap --stream-to=frame.raw --stream-count=1
+
+
+v4l2-ctl --device /dev/video0 --set-fmt-video=width=640,height=480,pixelformat=RGB3 --stream-mmap --stream-to=frame.raw --stream-count=1
+
+v4l2-ctl --device /dev/video0 --set-fmt-video=width=1920,height=1080,pixelformat=UYVY --stream-mmap --stream-to=frame.uyvy --stream-count=1
+
+
+
+
+
+width=640
+height=480
+size=${width}x${height}
+frames=8
+skip=7
+yavta -c$frames -p -F --skip $skip -f UYVY -s $size /dev/video0
+
+
+cd ZynqMP-U-Boot-Ultra96-V2
+bootgen -arch zynqmp -image boot.bif -w -o boot.bin && bootgen -arch zynqmp -image boot_outer_shareable.bif -w -o boot_outer_shareable.bin
+cp {boot.bin,boot_outer_shareable.bin} /run/media/xerpi/A779-C723/ && sync
+
+cd Vivado/ultra96v2_mipi_csi_direct
+xsct
+hsi open_hw_design design_1_wrapper.xsa
+hsi set_repo_path /home/xerpi/Desktop/Research/device-tree-xlnx
+hsi create_sw_design device-tree -os device_tree -proc psu_cortexa53_0
+hsi generate_target -dir my_dts
+exit
+
+
+createdts -hw design_1_wrapper.xsa -zocl -platform-name "Avnet Ultra96-V2 Rev1" -board zcu104-revc -compile
+
+
+make CROSS_COMPILE=aarch64-linux-gnu- ARCH=arm64 -j 10 Image
+cp arch/arm64/boot/Image /run/media/xerpi/A779-C723/image-5.15.0-xlnx-v2022.1-zynqmp-fpga && sync
+
+make CROSS_COMPILE=aarch64-linux-gnu- ARCH=arm64 xilinx/avnet-ultra96v2-rev1.dtb
+cp arch/arm64/boot/dts/xilinx/avnet-ultra96v2-rev1.dtb /run/media/xerpi/A779-C723/devicetree-5.15.0-xlnx-v2022.1-zynqmp-fpga-ultra96v2.dtb && sync
+
+
+#### Notes
+To help debug, add "subdir-ccflags-y += -DDEBUG" to drivers/media/Makefile
+

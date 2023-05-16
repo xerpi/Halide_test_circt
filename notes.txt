@@ -1,2 +1,0 @@
-HL_DEBUG_CODEGEN=4 ./halide_test 2>&1 | tee log.txt | grep CIRCT -A 6 | less
-
