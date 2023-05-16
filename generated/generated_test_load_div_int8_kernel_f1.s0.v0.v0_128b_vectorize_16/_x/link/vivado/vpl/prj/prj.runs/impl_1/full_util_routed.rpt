@@ -1,7 +1,7 @@
 Copyright 1986-2023 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2.2 (lin64) Build 3788238 Tue Feb 21 19:59:23 MST 2023
-| Date         : Fri May  5 13:31:07 2023
+| Date         : Fri May  5 18:44:43 2023
 | Host         : xps15-linux running 64-bit Arch Linux
 | Command      : report_utilization -file full_util_routed.rpt -pb full_util_routed.pb
 | Design       : u96v2_sbc_base_wrapper

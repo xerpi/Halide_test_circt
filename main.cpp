@@ -57,7 +57,8 @@ void test_load(Halide::Target target)
     func(x) = 5 * in(x);
 
     // AXI data bus = 1024b -> (1024/8)/4 = 32 elements
-    func.vectorize(x, 32);
+    //func.vectorize(x, );
+    //func.compute_root();
 
     //func.unroll(x, 32);
     std::string name(__FUNCTION__);
@@ -73,7 +74,7 @@ void test_load_div_int8(Halide::Target target)
     func(x) = in(x) / 3;
 
     // AXI data bus = 1024b -> (1024/8)/1 = 128 elements
-    func.vectorize(x, 128);
+    //func.vectorize(x, 16);
 
     //func.unroll(x, 32);
     std::string name(__FUNCTION__);
@@ -107,11 +108,11 @@ void test_blur_3x3(Halide::Target target)
     blur_y(x, y) = (blur_x(x, y-1) + blur_x(x, y) + blur_x(x, y+1))/3;
 
     // The schedule - defines order, locality; implies storage
-    blur_y.tile(x, y, xi, yi, 16, 16);
+    //blur_y.tile(x, y, xi, yi, 16, 16);
     //blur_y.vectorize(xi, 8);
 
-    blur_x.store_at(blur_y, x)
-          .compute_at(blur_y, yi);
+    //blur_x.store_at(blur_y, x)
+    //      .compute_at(blur_y, yi);
     //blur_x.vectorize(x, 8);
 
     std::string name(__FUNCTION__);
@@ -130,7 +131,7 @@ void test_blur_3x3_sliding_window(Halide::Target target)
     blur_y(x, y) = (blur_x(x, y-1) + blur_x(x, y) + blur_x(x, y+1))/3;
 
     // The schedule - defines order, locality; implies storage
-    blur_y.tile(x, y, xi, yi, 64, 64);
+    blur_y.tile(x, y, xi, yi, 32, 32);
     //blur_y.vectorize(xi, 8);
 
     blur_x.store_at(blur_y, x)
